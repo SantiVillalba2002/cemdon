@@ -15,18 +15,25 @@ import { Button } from '@/components/ui/button';
 
 const specialties = [
   {
+    id: 'diabetologia',
+    title: 'Diabetología',
+    description: 'Tratamiento integral y control de diabetes con tecnología avanzada.',
+    icon: Activity,
+    color: 'bg-primary/10 text-primary',
+  },
+  {
     id: 'nutricion',
     title: 'Nutrición',
     description: 'Planes personalizados basados en tu metabolismo y objetivos.',
     icon: Apple,
-    color: 'bg-primary/10 text-primary',
+    color: 'bg-accent/10 text-accent',
   },
   {
     id: 'mindfulness',
     title: 'Mindfulness',
     description: 'Técnicas de meditación y manejo del estrés.',
     icon: Brain,
-    color: 'bg-accent/10 text-accent',
+    color: 'bg-secondary/10 text-secondary',
   },
   {
     id: 'cardiologia',
@@ -40,21 +47,21 @@ const specialties = [
     title: 'Medicina Preventiva',
     description: 'Chequeos integrales y detección temprana.',
     icon: Stethoscope,
-    color: 'bg-secondary/10 text-secondary',
+    color: 'bg-orange-100 text-orange-500',
   },
   {
     id: 'fitness',
     title: 'Fitness Médico',
     description: 'Ejercicio adaptado a tu condición de salud.',
     icon: Dumbbell,
-    color: 'bg-orange-100 text-orange-500',
+    color: 'bg-indigo-100 text-indigo-500',
   },
   {
     id: 'sueno',
     title: 'Salud del Sueño',
     description: 'Optimiza tu descanso para mejor rendimiento.',
     icon: Moon,
-    color: 'bg-indigo-100 text-indigo-500',
+    color: 'bg-purple-100 text-purple-500',
   },
 ];
 
