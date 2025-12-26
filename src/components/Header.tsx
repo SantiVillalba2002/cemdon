@@ -26,16 +26,16 @@ export const Header = () => {
   return (
     <>
       <motion.header
-        className={`fixed top-4 left-1/2 -translate-x-1/2 z-50 transition-all duration-500 ${
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
           isScrolled
-            ? 'w-[95%] max-w-5xl bg-white/80 backdrop-blur-xl shadow-soft rounded-full px-6 py-3'
-            : 'w-full max-w-7xl bg-transparent px-6 py-6'
+            ? 'bg-white/90 backdrop-blur-xl shadow-soft py-3'
+            : 'bg-transparent py-6'
         }`}
         initial={{ y: -100, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.6, ease: 'easeOut' }}
       >
-        <nav className="flex items-center justify-between">
+        <nav className="container mx-auto px-6 flex items-center justify-between">
           {/* Logo */}
           <a href="#" className="flex items-center gap-2">
             <div className="w-10 h-10 bg-primary rounded-2xl flex items-center justify-center">
