@@ -1,51 +1,25 @@
 import { useEffect, useState, useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
-import { Bell, Activity, TrendingUp, Heart, Download, Star } from 'lucide-react';
+import { Bell, Calendar, MessageCircle, Users, ExternalLink, Star } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
 const notifications = [
   { id: 1, icon: '🥗', title: 'Tip del día', message: 'Añade más fibra a tu desayuno', time: 'Ahora' },
   { id: 2, icon: '💧', title: 'Recordatorio', message: 'Es hora de hidratarte', time: '5 min' },
-  { id: 3, icon: '🏃', title: 'Meta cumplida!', message: '10,000 pasos alcanzados', time: '1 hora' },
+  { id: 3, icon: '📅', title: 'Turno confirmado', message: 'Mañana 10:00 - Nutrición', time: '1 hora' },
 ];
 
 export const AppCemdon = () => {
   const sectionRef = useRef(null);
   const isInView = useInView(sectionRef, { once: true, amount: 0.3 });
-  const [glucoseData, setGlucoseData] = useState<number[]>([]);
   const [showNotifications, setShowNotifications] = useState(false);
 
   useEffect(() => {
     if (isInView) {
-      // Animate glucose data drawing
-      const data = [85, 92, 88, 95, 90, 87, 93, 89, 86, 91, 88, 90];
-      let currentData: number[] = [];
-      data.forEach((value, index) => {
-        setTimeout(() => {
-          currentData = [...currentData, value];
-          setGlucoseData([...currentData]);
-        }, index * 150);
-      });
-
       // Show notifications with delay
       setTimeout(() => setShowNotifications(true), 800);
     }
   }, [isInView]);
-
-  // Create SVG path for glucose chart
-  const createPath = (data: number[]) => {
-    if (data.length < 2) return '';
-    const width = 240;
-    const height = 80;
-    const minVal = Math.min(...data) - 5;
-    const maxVal = Math.max(...data) + 5;
-
-    return data.map((val, i) => {
-      const x = (i / (data.length - 1)) * width;
-      const y = height - ((val - minVal) / (maxVal - minVal)) * height;
-      return `${i === 0 ? 'M' : 'L'} ${x} ${y}`;
-    }).join(' ');
-  };
 
   return (
     <section id="app" ref={sectionRef} className="py-24 bg-gradient-to-b from-background to-wellness-mist overflow-hidden">
@@ -60,7 +34,7 @@ export const AppCemdon = () => {
           >
             <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary/10 text-primary text-sm font-medium mb-4">
               <span className="w-2 h-2 bg-primary rounded-full animate-pulse" />
-              App disponible
+              Web App disponible
             </span>
 
             <h2 className="font-display text-3xl md:text-4xl font-bold mb-4">
@@ -68,16 +42,17 @@ export const AppCemdon = () => {
             </h2>
 
             <p className="text-muted-foreground font-body text-lg mb-8 max-w-md">
-              Monitorea tus métricas, recibe recordatorios personalizados y mantente 
-              conectado con tu equipo médico las 24/7.
+              Accede a tu plan personalizado, agenda turnos, recibe recordatorios y mantente 
+              conectado con tu equipo médico las 24/7 desde cualquier dispositivo.
             </p>
 
             {/* Features list */}
             <div className="space-y-4 mb-8">
               {[
-                { icon: Activity, text: 'Seguimiento de glucemia y signos vitales' },
+                { icon: Calendar, text: 'Agenda y gestiona tus turnos fácilmente' },
                 { icon: Bell, text: 'Notificaciones y tips personalizados' },
-                { icon: Heart, text: 'Conexión directa con tu médico' },
+                { icon: MessageCircle, text: 'Chat directo con tu equipo médico' },
+                { icon: Users, text: 'Comunidad de pacientes CEMDON' },
               ].map((feature, index) => (
                 <motion.div
                   key={index}
@@ -95,17 +70,11 @@ export const AppCemdon = () => {
               ))}
             </div>
 
-            {/* Download buttons */}
-            <div className="flex flex-col sm:flex-row gap-3">
-              <Button variant="primary" size="lg" className="gap-2">
-                <Download className="w-5 h-5" strokeWidth={1.5} />
-                App Store
-              </Button>
-              <Button variant="outline" size="lg" className="gap-2">
-                <Download className="w-5 h-5" strokeWidth={1.5} />
-                Google Play
-              </Button>
-            </div>
+            {/* Access button */}
+            <Button variant="primary" size="lg" className="gap-2">
+              <ExternalLink className="w-5 h-5" strokeWidth={1.5} />
+              Acceder a la Web App
+            </Button>
 
             {/* Rating */}
             <div className="flex items-center gap-2 mt-6">
@@ -114,7 +83,7 @@ export const AppCemdon = () => {
                   <Star key={star} className="w-4 h-4 text-yellow-400 fill-yellow-400" />
                 ))}
               </div>
-              <span className="text-sm text-muted-foreground font-body">4.9 • 10k+ descargas</span>
+              <span className="text-sm text-muted-foreground font-body">4.9 • +2,500 usuarios activos</span>
             </div>
           </motion.div>
 
@@ -167,43 +136,42 @@ export const AppCemdon = () => {
                       <span className="text-xs text-primary font-medium">Tu equipo médico está en línea</span>
                     </div>
 
-                    {/* Glucose chart */}
+                    {/* Quick Actions */}
                     <div className="bg-white rounded-2xl p-4 shadow-sm">
-                      <div className="flex items-center justify-between mb-3">
-                        <span className="text-xs font-medium text-secondary">Glucemia hoy</span>
-                        <span className="text-lg font-display font-bold text-primary">
-                          {glucoseData.length > 0 ? glucoseData[glucoseData.length - 1] : '--'} mg/dL
+                      <p className="text-xs font-medium text-secondary mb-3">Acciones rápidas</p>
+                      <div className="grid grid-cols-3 gap-2">
+                        {[
+                          { icon: '📅', label: 'Turnos' },
+                          { icon: '💬', label: 'Chat' },
+                          { icon: '📋', label: 'Mi Plan' },
+                        ].map((action) => (
+                          <div
+                            key={action.label}
+                            className="flex flex-col items-center gap-1 p-2 rounded-xl bg-wellness-cream/50"
+                          >
+                            <span className="text-lg">{action.icon}</span>
+                            <span className="text-[10px] text-muted-foreground">{action.label}</span>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+
+                    {/* Next appointment */}
+                    <div className="bg-white rounded-2xl p-4 shadow-sm">
+                      <div className="flex items-center justify-between mb-2">
+                        <span className="text-xs font-medium text-secondary">Próximo turno</span>
+                        <span className="text-[10px] text-primary font-medium px-2 py-0.5 bg-primary/10 rounded-full">
+                          Mañana
                         </span>
                       </div>
-                      <svg width="100%" height="80" viewBox="0 0 240 80">
-                        {glucoseData.length > 1 && (
-                          <>
-                            <defs>
-                              <linearGradient id="glucoseGradient" x1="0" y1="0" x2="0" y2="1">
-                                <stop offset="0%" stopColor="hsl(var(--primary))" stopOpacity="0.3" />
-                                <stop offset="100%" stopColor="hsl(var(--primary))" stopOpacity="0" />
-                              </linearGradient>
-                            </defs>
-                            <motion.path
-                              d={createPath(glucoseData)}
-                              fill="none"
-                              stroke="hsl(var(--primary))"
-                              strokeWidth="2"
-                              strokeLinecap="round"
-                              initial={{ pathLength: 0 }}
-                              animate={{ pathLength: 1 }}
-                              transition={{ duration: 1.5, ease: 'easeOut' }}
-                            />
-                            <path
-                              d={`${createPath(glucoseData)} L 240 80 L 0 80 Z`}
-                              fill="url(#glucoseGradient)"
-                            />
-                          </>
-                        )}
-                      </svg>
-                      <div className="flex items-center gap-1 text-xs text-muted-foreground mt-2">
-                        <TrendingUp className="w-3 h-3 text-primary" />
-                        <span>Estable en rango objetivo</span>
+                      <div className="flex items-center gap-3">
+                        <div className="w-10 h-10 rounded-xl bg-accent/10 flex items-center justify-center">
+                          <span className="text-lg">🥗</span>
+                        </div>
+                        <div>
+                          <p className="text-sm font-medium text-secondary">Nutrición</p>
+                          <p className="text-[10px] text-muted-foreground">10:00 - Dra. García</p>
+                        </div>
                       </div>
                     </div>
 

@@ -5,8 +5,7 @@ import {
   Phone, 
   Mail, 
   Clock, 
-  Send,
-  CheckCircle2 
+  Send
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -66,58 +65,36 @@ export const Contact = () => {
         </motion.div>
 
         <div className="grid lg:grid-cols-5 gap-8 max-w-6xl mx-auto">
-          {/* Map placeholder */}
+          {/* Map - Google Maps Embed of San Francisco, Córdoba, Argentina */}
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="lg:col-span-3 relative h-[400px] lg:h-auto rounded-3xl overflow-hidden"
+            className="lg:col-span-3 relative h-[400px] lg:h-auto rounded-3xl overflow-hidden shadow-soft"
           >
-            {/* Styled map placeholder */}
-            <div className="absolute inset-0 bg-gradient-to-br from-wellness-sage via-wellness-mist to-wellness-cream">
-              <div className="absolute inset-0 opacity-30">
-                {/* Grid pattern */}
-                <svg className="w-full h-full" xmlns="http://www.w3.org/2000/svg">
-                  <defs>
-                    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
-                      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="hsl(var(--primary))" strokeWidth="0.5" opacity="0.3" />
-                    </pattern>
-                  </defs>
-                  <rect width="100%" height="100%" fill="url(#grid)" />
-                </svg>
-              </div>
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d27189.247391392!2d-62.09847!3d-31.428611!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95cb2f6e6a0d1a4b%3A0x7c6d4b8f0c3e1a2d!2sSan%20Francisco%2C%20C%C3%B3rdoba%2C%20Argentina!5e0!3m2!1ses!2sar!4v1703000000000!5m2!1ses!2sar"
+              width="100%"
+              height="100%"
+              style={{ border: 0, minHeight: '400px' }}
+              allowFullScreen
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+              title="Ubicación CEMDON - San Francisco, Córdoba"
+              className="grayscale-[30%] contrast-[1.1]"
+            />
 
-              {/* Location marker */}
-              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
-                <motion.div
-                  initial={{ scale: 0 }}
-                  whileInView={{ scale: 1 }}
-                  viewport={{ once: true }}
-                  transition={{ type: 'spring', stiffness: 200, delay: 0.3 }}
-                  className="relative"
-                >
-                  <div className="w-16 h-16 bg-primary rounded-full flex items-center justify-center shadow-glow">
-                    <MapPin className="w-8 h-8 text-white" strokeWidth={1.5} />
-                  </div>
-                  <div className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-4 h-4 bg-primary rotate-45" />
-                  
-                  {/* Pulse rings */}
-                  <div className="absolute inset-0 -m-4 rounded-full border-2 border-primary/30 animate-ping" />
-                </motion.div>
-              </div>
-            </div>
-
-            {/* Info cards on map */}
+            {/* Info cards overlay */}
             <div className="absolute bottom-6 left-6 right-6 flex flex-wrap gap-3">
-              <div className="bg-white/90 backdrop-blur-sm rounded-2xl px-4 py-3 shadow-soft flex items-center gap-3">
+              <div className="bg-white/95 backdrop-blur-sm rounded-2xl px-4 py-3 shadow-soft flex items-center gap-3">
                 <MapPin className="w-5 h-5 text-primary" strokeWidth={1.5} />
                 <div>
                   <p className="text-xs text-muted-foreground">Dirección</p>
-                  <p className="text-sm font-medium text-secondary">Av. Santa Fe 1234, CABA</p>
+                  <p className="text-sm font-medium text-secondary">San Francisco, Córdoba</p>
                 </div>
               </div>
-              <div className="bg-white/90 backdrop-blur-sm rounded-2xl px-4 py-3 shadow-soft flex items-center gap-3">
+              <div className="bg-white/95 backdrop-blur-sm rounded-2xl px-4 py-3 shadow-soft flex items-center gap-3">
                 <Clock className="w-5 h-5 text-primary" strokeWidth={1.5} />
                 <div>
                   <p className="text-xs text-muted-foreground">Horarios</p>
@@ -212,11 +189,11 @@ export const Contact = () => {
                 <p className="text-sm text-muted-foreground mb-4">O contáctanos directamente:</p>
                 <div className="space-y-3">
                   <a
-                    href="tel:+541155551234"
+                    href="tel:+543564123456"
                     className="flex items-center gap-3 text-secondary hover:text-primary transition-colors"
                   >
                     <Phone className="w-5 h-5" strokeWidth={1.5} />
-                    <span className="font-body">+54 11 5555-1234</span>
+                    <span className="font-body">+54 3564 12-3456</span>
                   </a>
                   <a
                     href="mailto:contacto@cemdon.com"

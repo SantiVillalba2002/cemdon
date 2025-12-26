@@ -1,6 +1,6 @@
 import { useRef, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { ArrowRight, Heart, Sparkles } from 'lucide-react';
+import { ArrowRight, Sparkles } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
 export const Hero = () => {
@@ -53,8 +53,7 @@ export const Hero = () => {
             </motion.div>
 
             <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-6">
-              Encendemos tu salud,{' '}
-              <span className="text-primary">transformamos</span> tu vida
+              <span className="text-primary">Transformamos</span> tu vida con salud integral
             </h1>
 
             <p className="text-lg text-muted-foreground max-w-lg mb-8 font-body">
@@ -115,7 +114,7 @@ export const Hero = () => {
 
               {/* Inner organic shape */}
               <div className="absolute inset-8 organic-blob bg-gradient-to-br from-primary/80 to-accent/60 breathe flex items-center justify-center shadow-glow">
-                <Heart className="w-20 h-20 md:w-24 md:h-24 text-white" strokeWidth={1} fill="currentColor" />
+                <span className="text-6xl md:text-7xl">🌿</span>
               </div>
 
               {/* Floating elements */}
