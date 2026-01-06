@@ -51,7 +51,7 @@ export const Hero = () => {
               <span>Tu bienestar integral comienza aquí</span>
             </motion.div>
 
-            <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-6">Transformá tu vida en manos de expertos<span className="text-primary">Transformá</span> tu vida con salud integral
+            <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-6">Transformá tu vida en manos de expertos<span className="text-primary">Transformá</span> tu vida con salud integral
             </h1>
 
             <p className="text-lg text-muted-foreground max-w-lg mb-8 font-body">Integramos medicina de vanguardia, tecnología y un equipo interdisciplinario para el tratamiento integral de la Diabetes, Obesidad y Nutrición. Consultas presenciales y telemedicina.</p>
